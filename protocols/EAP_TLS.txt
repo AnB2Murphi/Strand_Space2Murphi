@@ -1,0 +1,66 @@
+Protocol EAPTLS:
+Types:{
+    Agent:A.B.C.D
+}
+Knowledges:{
+    A : <A.B.C.D.nonce(supi).nonce(ue).nonce(ue1).nonce(prekey).nonce(certA).nonce(eapm)>;
+    B : <A.B.C.nonce(seafn)>;
+    C : <A.B.C.D.nonce(ausf).nonce(ausfn).nonce(sucm).nonce(certC)>; 
+    D : <A.B.C.D.nonce(start)>
+}
+Agents:{
+    A:A.B.C.D.nonce(ue).nonce(ue1).nonce(prekey).nonce(certA).nonce(eapm),
+    [1]+,B,(nonce(supi).nonce(ue)): aenc{<nonce(supi).nonce(ue)>}pk(D),
+    [6]-:<nonce(start).nonce(seafn)>,
+    [7]+,B,(nonce(ue1)):nonce(ue1),
+    [10]-:<nonce(ausf).nonce(certC).nonce(seafn)>,
+    [11]+,B,(nonce(prekey).nonce(certA)):<aenc{nonce(prekey)}pk(C).nonce(certA).sign{<nonce(start).nonce(ue1).nonce(ausf).nonce(certC)>}sk(A).senc{<nonce(start).nonce(ue1).nonce(ausf).nonce(certC)>}hash(<nonce(ue1).nonce(ausf).nonce(prekey)>)>,
+    [14]-:tmp(x10), 
+    [15]+,B,(nonce(eapm)):nonce(eapm),
+    [18]-:nonce(sucm);
+
+    B:A.B.C.D.nonce(seafn),
+    [1]-:tmp(m1),
+    [2]+,C,(nonce(seafn)):<tmp(m1).nonce(seafn)>,
+    [5]-:tmp(x2),
+    [6]+,A,():<tmp(x2).nonce(seafn)>,
+    [7]-:tmp(x3),
+    [8]+,C,():<tmp(x3).nonce(seafn)>,
+    [9]-:<nonce(ausf).nonce(certC).nonce(ausfn)>,
+    [10]+,A,():<nonce(ausf).nonce(certC).nonce(seafn)>,
+    [11]-:<aenc{nonce(prekey)}pk(C).nonce(certA).sign{<nonce(start).nonce(ue1).nonce(ausf).nonce(certC)>}sk(A).senc{<nonce(start).nonce(ue1).nonce(ausf).nonce(certC)>}hash(<nonce(ue1).nonce(ausf).nonce(prekey)>)>,
+    [12]+,C,():<aenc{nonce(prekey)}pk(C).nonce(certA).sign{<nonce(start).nonce(ue1).nonce(ausf).nonce(certC)>}sk(A).senc{<nonce(start).nonce(ue1).nonce(ausf).nonce(certC)>}hash(<nonce(ue1).nonce(ausf).nonce(prekey)>)>,
+    [13]-:tmp(x10),
+    [14]+,A,():tmp(x10),
+    [15]-:nonce(eapm),
+    [16]+,C,():nonce(eapm),
+    [17]-:nonce(sucm),
+    [18]+,A,():nonce(sucm);
+
+    C: B.C.D.nonce(ausf).nonce(sucm).nonce(ausfn), 
+    [2]-:<tmp(m1).nonce(seafn)>,
+    [3]+,D,():<tmp(m1).nonce(seafn).nonce(ausfn)>,
+    [4]-:nonce(start),
+    [5]+,B,():nonce(start),
+    [8]-:<nonce(ue1).nonce(seafn)>,
+    [9]+,B,(nonce(ausf).nonce(certC)):<nonce(ausf).nonce(certC).nonce(ausfn)>,
+    [12]-:<aenc{nonce(prekey)}pk(C).nonce(certA).sign{<nonce(start).nonce(ue1).nonce(ausf).nonce(certC)>}sk(A).senc{<nonce(start).nonce(ue1).nonce(ausf).nonce(certC)>}hash(<nonce(ue1).nonce(ausf).nonce(prekey)>)>,
+    [13]+,B,():senc{<nonce(start).nonce(ue1).nonce(ausf).nonce(certC)>}hash(<nonce(start).nonce(ue1).nonce(prekey)>),
+    [16]-:nonce(eapm),
+    [17]+,B,(nonce(sucm)):nonce(sucm);
+
+    D:C.D.nonce(start),
+    [3]-:<tmp(x1).nonce(seafn).nonce(ausfn)>,
+    [4]+,C,(nonce(start)):nonce(start)
+}
+Environment:{
+[agent1] A [1] : <UE.SEAF.Intruder.UDM.nonce(supi).nonce(ue).nonce(ue1).nonce(prekey).nonce(certA).nonce(eapm)>;
+[agent2] B [1] : <UE.SEAF.Intruder.nonce(seafn)>;
+[agent3] C [1] : <UE.Intruder.AUSF.UDM.nonce(ausf).nonce(ausfn).nonce(sucm).nonce(certC)>;
+[agent4] D [1] : <UE.SEAF.AUSF.UDM.nonce(start)>
+}
+Goals:{
+    [weakC:6] C non-injectively agrees with A on nonce(ausf);
+    [secrecy] nonce(prekey)
+}
+end

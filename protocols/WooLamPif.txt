@@ -1,0 +1,32 @@
+Protocol WooLamPif:
+Types:{
+    Agent:A.B
+}
+Knowledges:{
+    A : <A.B.k(A,S)>;
+    B : <A.B.S.k(B,S).nonce(Nb)>;
+    S : <B.k(A,S).k(B,S)>
+}
+Agents:{
+    A:A.B.k(A,S),
+    [1]+,B,():A,
+    [2]-:nonce(Nb),
+    [3]+,B,():senc{<A.B.nonce(Nb)>}k(A,S);
+    B:A.B.S.k(B,S).nonce(Nb),
+    [1]-:A,
+    [2]+,A,(nonce(Nb)):nonce(Nb),
+    [3]-:senc{<A.B.nonce(Nb)>}k(A,S),
+    [4]+,S,():senc{<A.B.nonce(Nb).senc{<A.B.nonce(Nb)>}k(A,S)>}k(B,S);
+    S:B.k(A,S).k(B,S),
+    [4]-:senc{<A.B.nonce(Nb).senc{<A.B.nonce(Nb)>}k(A,S)>}k(B,S),
+    [5]+,B,():senc{<A.B.nonce(Nb)>}k(B,S)
+}
+Environment:{
+[agent1] A [1] : <Alice.Bob.k(Alice,Server)>;
+[agent2] B [1] : <Alice.Bob.Server.k(Bob,Server).nonce(Nb)>;
+[agent3] S [1] : <Bob.k(Alice,Server).k(Bob,Server)>
+}
+Goals:{
+[secrecy] nonce(Nb)
+}
+end

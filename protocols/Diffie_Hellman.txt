@@ -1,0 +1,29 @@
+Protocol DiffieHellman:
+Types:{
+    Agent:A.B;
+    Number:g
+}
+Knowledges:{
+    A : <A.B.const(g).const(p).const(x).nonce(Na)>;
+    B : <B.A.const(g).const(p).const(y)>;
+    I : <const(g).const(p).const(xi).const(yi)>
+}
+Agents:{
+    A:const(g).const(p).const(x).k(A,B).nonce(Na),
+    [1]+,B,(const(x)): mod(exp(const(g),const(x)),const(p)),
+    [2]-:tmp(m2),
+    [3]+,B,(nonce(Na)):senc{nonce(Na)}mod(exp(tmp(m2),const(x)),const(p));
+
+    B:const(y).k(A,B),
+    [1]-:tmp(m1),
+    [2]+,A,(const(g).nonce(y)):mod(exp(const(g),const(y)),const(p)),
+    [3]-:senc{tmp(m3)}mod(exp(tmp(m2),const(x)),const(p))
+}
+Environment:{
+[agent1] A [1] : <Alice.Intruder.const(g).const(p).const(x).nonce(Na)>;
+[agent2] B [1] : <Bob.Intruder.const(g).const(p).const(y)>
+}
+Goals:{
+    [secrecy1] nonce(Na)
+}
+end

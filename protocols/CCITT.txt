@@ -1,0 +1,24 @@
+Protocol CCITTX509:
+Types:{
+    Agent:A.B
+}
+Knowledges:{
+    A : <A.B.nonce(Na).nonce(Ta).nonce(Xa).nonce(Ya)>;
+    B : <A>
+}
+Agents:{
+    A:A.B.nonce(Na).nonce(Ta).nonce(Xa).nonce(Ya),
+    [1]+,B,(nonce(Na).nonce(Ta).nonce(Xa).nonce(Ya)): <A.aenc{<nonce(Ta).nonce(Na).B.nonce(Xa).aenc{nonce(Ya)}pk(B)>}sk(A)>;
+    B:B,
+    [1]-:<A.aenc{<nonce(Ta).nonce(Na).B.nonce(Xa).aenc{nonce(Ya)}pk(B)>}sk(A)>
+}
+Environment:{
+[agent1] A [1] : <Alice.Intruder.nonce(Na).nonce(Ta).nonce(Xa).nonce(Ya)>;
+[agent2] B [1] : <Alice>
+}
+Goals:{
+[secrecy] nonce(Ya);
+[weakA] A non-injectively agrees with B on nonce(Xa);
+[weakA1] A non-injectively agrees with B on nonce(Ya)
+}
+end

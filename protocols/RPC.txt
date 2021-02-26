@@ -1,0 +1,28 @@
+Protocol RPC:
+Types:{
+    Agent:A.B
+}
+Knowledges:{
+    A : <A.B.k(A,B).nonce(Na)>;
+    B : <A.B.k(A,B).nonce(Nb).nonce(Nb1).nonce(kab)>
+}
+Agents:{
+    A:A.B.k(A,B).nonce(Na),
+    [1]+,B,(nonce(Na)):<A.senc{nonce(Na)}k(A,B)>,
+    [2]-:senc{<nonce(Na).nonce(Nb)>}k(A,B),
+    [3]+,B,():senc{nonce(Nb)}k(A,B),
+    [4]-:senc{<nonce(kab).nonce(Nb1)>}k(A,B);
+    B:A.B.k(A,B).nonce(Nb).nonce(Nb1).nonce(kab),
+    [1]-:<A.senc{nonce(Na)}k(A,B)>,
+    [2]+,A,(nonce(Nb)):senc{<nonce(Na).nonce(Nb)>}k(A,B),
+    [3]-:senc{nonce(Nb)}k(A,B),
+    [4]+,A,(nonce(Nb1)):senc{<nonce(kab).nonce(Nb1)>}k(A,B)
+}
+Environment:{
+[agent1] A [1] : <Alice.Bob.k(Alice,Bob).nonce(Na)>;
+[agent2] B [1] : <Alice.Bob.k(Alice,Bob).nonce(Nb).nonce(Nb1).nonce(kab)>
+}
+Goals:{
+[secrecy] nonce(kab)
+}
+end

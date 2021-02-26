@@ -1,16 +1,15 @@
-### Hi there 👋
+# SafetyProtocol
+Protocol described in A&amp;B language transforms into another theory prover
 
-<!--
-**AnB2Murphi/AnB2Murphi** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+终端：
+$ corebuild getModelString.byte -use-menhir 
 
-Here are some ideas to get you started:
+$ ./getModelString.byte NSPK.txt
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+$ cd outputs
+
+$ /Users/sword/Downloads/cmurphi5.4.9.1/src/mu result.m -c
+
+$ g++ -o result.o result.cpp -I /Users/sword/Downloads/cmurphi5.4.9.1/include/ -ggdb
+
+$ ./result.o >out1 -ndl

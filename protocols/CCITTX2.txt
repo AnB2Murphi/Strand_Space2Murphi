@@ -1,0 +1,29 @@
+Protocol CCITTX509X1:
+Types:{
+    Agent:A.B
+}
+Knowledges:{
+    A : <A.B.nonce(Na).nonce(Ta).nonce(Xa).nonce(Ya)>;
+    B : <A.B.nonce(Nb).nonce(Tb).nonce(Xb).nonce(Yb)>
+}
+Agents:{
+    A:A.B.nonce(Na).nonce(Ta).nonce(Xa).nonce(Ya),
+    [1]+,B,(nonce(Na).nonce(Ta).nonce(Xa).nonce(Ya)): <A.aenc{<nonce(Ta).nonce(Na).B.nonce(Xa).aenc{<nonce(Ya).aenc{nonce(Ya)}sk(A)>}pk(B)>}sk(A)>,
+    [2]-:<B.aenc{<nonce(Tb).nonce(Nb).A.nonce(Na).nonce(Xb).aenc{nonce(Yb)}pk(A)>}sk(B)>,
+    [3]+,B,():<A.aenc{nonce(Nb)}sk(A)>;
+    B:A.B.nonce(Nb).nonce(Tb).nonce(Xb).nonce(Yb),
+    [1]-:<A.aenc{<nonce(Ta).nonce(Na).B.nonce(Xa).aenc{<nonce(Ya).aenc{hash(nonce(Ya))}sk(A)>}pk(B)>}sk(A)>,
+    [2]+,A,():<B.aenc{<nonce(Tb).nonce(Nb).A.nonce(Na).nonce(Xb).aenc{nonce(Yb)}pk(A)>}sk(B)>,
+    [3]-:<A.aenc{nonce(Nb)}sk(A)>
+}
+Environment:{
+[agent1] A [1] : <Alice.Intruder.nonce(Na).nonce(Ta).nonce(Xa).nonce(Ya)>;
+[agent2] B [1] : <Intruder.Bob.nonce(Nb).nonce(Tb).nonce(Xb).nonce(Yb)>
+}
+Goals:{
+[secrecy] nonce(Ya);
+[secrecy1] nonce(Yb);
+[weakA] A non-injectively agrees with B on nonce(Xa);
+[weakA1] A non-injectively agrees with B on nonce(Ya)
+}
+end

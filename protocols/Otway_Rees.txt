@@ -1,0 +1,32 @@
+Protocol OtwayRess:
+Types:{
+    
+}
+Knowledges:{
+    A : <A.B.nonce(Na).nonce(N).k(A,S)>;
+    S : <nonce(Kab).k(A,S).k(B,S)>;
+    B : <B.S.nonce(Nb).k(B,S)>
+}
+Agents:{
+    A:A.B.nonce(Na).nonce(N).k(A,S),
+    [1]+,B,(A.B.nonce(Na).nonce(N).k(A,S)):<nonce(N).A.B.senc{<nonce(Na).nonce(N).A.B>}k(A,S)>,
+    [4]-:<nonce(N).senc{<nonce(Na).nonce(Kab)>}k(A,S)>;
+    S:nonce(Kab).k(A,S).k(B,S),
+    [2]-:<nonce(N).A.B.tmp(m1).senc{<nonce(Nb).nonce(N).A.B>}k(B,S)>,
+    [3]+,B,(nonce(Kab).k(A,S).k(B,S)):<nonce(N).senc{<nonce(Na).nonce(Kab)>}k(A,S).senc{<nonce(Nb).nonce(Kab)>}k(B,S)>;
+    B:B.S.nonce(Nb).k(B,S),
+    [1]-:<nonce(N).A.B.tmp(m1)>,
+    [2]+,S,(B.S.nonce(Nb).k(B,S)):<nonce(N).A.B.tmp(m1).senc{<nonce(Nb).nonce(N).A.B>}k(B,S)>,
+    [3]-:<nonce(N).tmp(m2).senc{<nonce(Nb).nonce(Kab)>}k(B,S)>,
+    [4]+,A,():<nonce(N).tmp(m2)>
+ }
+Environment:{
+[agent1] A [1] : <Alice.Bob.nonce(na).nonce(n).k(Alice,Server)>;
+[agent2] S [1] : <nonce(kab).k(Alice,Server).k(Bob,Server)>;
+[agent3] B [1] : <Bob.Server.nonce(nb).k(Bob,Server)>
+
+}
+Goals:{
+[secrecy1] nonce(kab)
+}
+end

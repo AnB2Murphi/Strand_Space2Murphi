@@ -1,0 +1,28 @@
+Protocol NSL:
+Types:{
+    Agent:A.B
+}
+Knowledges:{
+    A : <A.B.nonce(Na)>;
+    B : <B.nonce(Nb)>
+}
+Agents:{
+    A:A.B,
+    [1]+,B,(nonce(Na)) : aenc{<nonce(Na).A>}pk(B),
+    [2]- : aenc{<nonce(Na).nonce(Nb).B>}pk(A),
+    [3]+,B,():aenc{nonce(Nb)}pk(B);
+    B:B.nonce(Nb),
+    [1]-:aenc{<nonce(Na).A>}pk(B),
+    [2]+,A,(nonce(Nb).B):aenc{<nonce(Na).nonce(Nb).B>}pk(A),
+    [3]-:aenc{nonce(Nb)}pk(B)
+}
+Environment:{
+[agent1] A [1] : <Alice.Intruder.nonce(Na)>;
+[agent2] B [1] : <Bob.nonce(Nb)>
+}
+Goals:{
+[secrecy] nonce(Nb);
+[weakB] B non-injectively agrees with A on nonce(Na)
+}
+end
+
