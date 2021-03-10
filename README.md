@@ -7,7 +7,7 @@ theory files for paper:<br>
 >The main security protocols proved are:<br>
 >>Cache Coherence Protocol):<br>
 >>>|Protocols | Unsatisfied  | Time (sec.) | Memory｜
->>>|:---:|:---:|:---:|:---:
+>>>|:---:|:---:|:---:|:---:|
 >>>|MESI|3|4|22|87|
 >>>|MOESI|3|4|19|59|
 >>>|MutualEx|5|5|24|59|
