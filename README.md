@@ -3,7 +3,7 @@ AnB2Murphi
 AnB2Murphi is an automatic translator to bridge the gap between high-level Alice&Bob specifications and low-level Murphi model checker, which can help verify the security protocol described in the A&B specifications.<br>
 
 
-theory files for paper:<br>
+Theory protocol for paper<br>
 ---
 *AnB2Murphi: A Translator for Converting Alice\&Bob Specifications to Murphi*<br>
 >The main security protocols proved are:<br>
@@ -24,7 +24,7 @@ theory files for paper:<br>
 >>|EAP-TLS authentication|weakC|151.55|1700| 
 
 
-Installation:<br>
+Installation<br>
 ---
 In our experiment, AnB2Murphi tool is run on a PC server with macOS Catalina.<br>
 
@@ -34,5 +34,9 @@ AnB2Murphi uses Ocaml 4.04.0 and requires several ocaml libraries to run, which 
 Menhir
 Core
 
+
+Usage
+---
+Run `cd SAFETYPROTOCOL/` and then run `corebuild getModelString.byte -use-menhir`
 
 
