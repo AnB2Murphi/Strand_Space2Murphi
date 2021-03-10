@@ -28,7 +28,7 @@ Installation<br>
 ---
 In our experiment, AnB2Murphi tool is run on a PC server with macOS Catalina.<br>
 
-Install Ocaml Environment<br>
+Install AnB2Murphi Environment<br>
 
 AnB2Murphi uses Ocaml 4.04.0, Murphi 5.4.9.1 and requires several ocaml libraries to run, which contains:<br>
 - Menhir
