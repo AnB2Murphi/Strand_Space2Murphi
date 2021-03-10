@@ -1,6 +1,6 @@
 AnB2Murphi
 ====
-AnB2Murphi is an automatic translator AnB2Murphi to bridge the gap between high-level Alice&Bob specifications and low-level Murphi model checker, which can help verify the security protocol described in the A&B specifications.<br>
+AnB2Murphi is an automatic translator to bridge the gap between high-level Alice&Bob specifications and low-level Murphi model checker, which can help verify the security protocol described in the A&B specifications.<br>
 
 
 theory files for paper:<br>
@@ -22,3 +22,17 @@ theory files for paper:<br>
 >>|Andrew Secure RP|secrecy(Kab)|2.77|54| 
 >>|EAP-TLS authentication|secrecy(prekey)|1.21|1700| 
 >>|EAP-TLS authentication|weakC|151.55|1700| 
+
+
+Installation:<br>
+---
+In our experiment, AnB2Murphi tool is run on a PC server with macOS Catalina.<br>
+
+Install Ocaml Environment<br>
+
+AnB2Murphi uses Ocaml 4.04.0 and requires several ocaml libraries to run, which contains:<br>
+Menhir
+Core
+
+
+
