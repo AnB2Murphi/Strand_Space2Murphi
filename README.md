@@ -1,6 +1,6 @@
 AnB2Murphi
 ====
-AnB2Murphi is an automatic translator AnB2Murphi to bridge the gap between high-level Alice&Bob specifications and low-level Murphi model checker, which can help verify the security protocol described in the A&B specifications.
+AnB2Murphi is an automatic translator AnB2Murphi to bridge the gap between high-level Alice&Bob specifications and low-level Murphi model checker, which can help verify the security protocol described in the A&B specifications.<br>
 theory files for paper:<br>
 ---
 *AnB2Murphi: A Translator for Converting Alice\&Bob Specifications to Murphi*<br>
