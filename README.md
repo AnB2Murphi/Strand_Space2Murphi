@@ -1,12 +1,12 @@
 AnB2Murphi
 ====
 AnB2Murphi is an automatic translator AnB2Murphi to bridge the gap between high-level Alice&Bob specifications and low-level Murphi model checker, which can help verify the security protocol described in the A&B specifications.
-Dafny theory files for paper:<br>
+theory files for paper:<br>
 ---
-*Encoding Induction Proof into Dafny*<br>
->The main safety-critical protocols proved are:<br>
+*AnB2Murphi: A Translator for Converting Alice\&Bob Specifications to Murphi*<br>
+>The main security protocols proved are:<br>
 >>Cache Coherence Protocol):<br>
->>>|Protocols|Rules|Scripts|Time(sec.)|Memory(KB)|
+>>>|Memory(KB)|Protocols | Unsatisfied  | Time (sec.) | Memory
 >>>|:---:|:---:|:---:|:---:|:---:|
 >>>|MESI|3|4|22|87|
 >>>|MOESI|3|4|19|59|
