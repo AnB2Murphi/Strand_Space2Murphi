@@ -6,7 +6,7 @@ theory files for paper:<br>
 *AnB2Murphi: A Translator for Converting Alice\&Bob Specifications to Murphi*<br>
 >The main security protocols proved are:<br>
 >>Cache Coherence Protocol):<br>
->>>|Memory(KB)|Protocols | Unsatisfied  | Time (sec.) | Memory
+>>>|Protocols | Unsatisfied  | Time (sec.) | Memory
 >>>|:---:|:---:|:---:|:---:|:---:|
 >>>|MESI|3|4|22|87|
 >>>|MOESI|3|4|19|59|
