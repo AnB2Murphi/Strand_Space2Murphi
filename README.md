@@ -8,12 +8,12 @@ theory files for paper:<br>
 >>Cache Coherence Protocol):<br>
 >>>|Protocols | Unsatisfied  | Time (sec.) | Memory|
 >>>|:---:|:---:|:---:|:---:|
->>>|MESI|3|4|22|87|
->>>|MOESI|3|4|19|59|
->>>|MutualEx|5|5|24|59|
->>>German|58|13|621|2433|
->>>Flash_nodata|152|60|9930|109660|
->>>Flash_data|165|62|10600|71276|
+>>>|Needham-Schroder public key| secrecy(Nb)|0.10|56|
+>>>||weakB|0.15|56|
+>>>|MutualEx|5|5|24|
+>>>German|58|13|621|
+>>>Flash_nodata|152|60|9930| 
+>>>Flash_data|165|62|10600| 
 
 >>Security Protocol:<br>
 >>>The Needham–Schroeder Public-Key Protocol<br>
