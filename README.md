@@ -50,7 +50,7 @@ Then, AnB2Murphi will generate the `getModelString.byte` which can help compile 
 
 $ ./getModelString.byte ./protocol/NSPK.txt
 
-Next, the protocol is compiled into Murphi code, the output file is located in `/source-code/outputs/`.
+Next, the protocol is compiled into Murphi code, the output file is located in `/source-code/outputs/result.m`.
 
 $cd outputs 
 
@@ -60,5 +60,6 @@ $ g++ -o result.o result.cpp -I `cmurphi-path`/cmurphi5.4.9.1/include/ -ggdb
 
 $ ./result.o >out1 -ndl -tv
 
+over verification, Result: `Invariant "weakB" failed.`. State Space Explored: `79 states, 110 rules fired in 0.10s.`
 
-
+This message indicates AnB2Murphi uses 79 states and 110 rules to find the counterexample path of invariant `weakB`.
