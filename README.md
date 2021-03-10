@@ -30,13 +30,34 @@ In our experiment, AnB2Murphi tool is run on a PC server with macOS Catalina.<br
 
 Install Ocaml Environment<br>
 
-AnB2Murphi uses Ocaml 4.04.0 and requires several ocaml libraries to run, which contains:<br>
+AnB2Murphi uses Ocaml 4.04.0, Murphi 5.4.9.1 and requires several ocaml libraries to run, which contains:<br>
 Menhir
+Murphi 
 Core
 
 
 Usage
 ---
-Run `cd SAFETYPROTOCOL/` and then run `corebuild getModelString.byte -use-menhir`
+To use AnB2Murphi, you need to comfirm the your computer equipped with  Ocaml 4.04.0, Murphi 5.4.9.1, Core, and Menhir in your environment.<br>
+
+Running the following command in terminal to verify the protocol models. In this example, we verify the Needham-Schoreder public key protocol model `NSPK.txt`.
+
+First, execute the following command to use AnB2murphi to compile the A&B specification.
+
+$ corebuild getModelString.byte -use-menhir 
+
+Then, AnB2Murphi will generate the `getModelString.byte` which can help compile the source protocol into Murphi code.
+
+$ ./getModelString.byte ./protocol/NSPK.txt
+
+Next, the protocol is compiled into Murphi code, the output file is located in `/source-code/outputs/`.
+
+$cd outputs 
+$ /Users/sword/Downloads/cmurphi5.4.9.1/src/mu result.m -c
+
+$ g++ -o result.o result.cpp -I /Users/sword/Downloads/cmurphi5.4.9.1/include/ -ggdb
+
+$ ./result.o >out1 -ndl
+
 
 
