@@ -25,7 +25,7 @@ Theory protocol for paper<br>
 
 Difficulty<br>
 ---
-
+There are three agents in Otway-Rees including Alice, Bob and Server. Besides, We implemented a mechanism for forwarding messages with the help of `tmp` message.
 
 Installation<br>
 ---
