@@ -23,6 +23,9 @@ Theory protocol for paper<br>
 >>|EAP-TLS authentication|secrecy(prekey)|1.21|1700| 
 >>|EAP-TLS authentication|weakC|151.55|1700| 
 
+Difficulty<br>
+---
+
 
 Installation<br>
 ---
