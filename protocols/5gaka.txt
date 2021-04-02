@@ -1,0 +1,46 @@
+Protocol AKA:
+Types:{
+    Agent:A.B.C
+}
+Knowledges:{
+    A : <A.B.C.nonce(supi).nonce(s).pk(C).k(A,C).nonce(sqnue).nonce(fail)>;
+    B : <A.B.C>;
+    C : <A.B.C.pk(C).k(A,C).nonce(sqnhn).nonce(R).nonce(kseaf)>
+}
+Agents:{
+    A:A.B.C.D.nonce(ue).nonce(ue1).nonce(prekey).nonce(certA).nonce(eapm),
+    [1]+,B,(nonce(supi).nonce(s)):<aenc{<nonce(supi).nonce(s)>}pk(C).C>,
+    [4]-:tmp(m2),
+    [5]+,B,():aenc{<nonce(R).B>}k(A,C),
+    [8]+,B,(nonce(fail)):<nonce(fail).<aenc{nonce(R)}k(A,C).aenc{<const(sqnue).nonce(R)>}k(A,C)>>,
+    [10]+,B,():nonce(fail);
+
+    B:A.B.C.D.nonce(seafn),
+    [1]-:tmp(m1),
+    [2]+,C,():<tmp(m1).B>,
+    [3]-:<nonce(R).tmp(m2).nonce(kseaf)>,
+    [4]+,A,():<nonce(R).tmp(m2)>,
+    [5]-:tmp(m3),
+    [6]+,C,():<tmp(m3).tmp(m1)>,
+    [7]-:nonce(supi),
+    [8]-:tmp(m3),
+    [9]+,C,():<tmp(m3).nonce(R).tmp(m1)>,
+    [10]-:nonce(fail);
+   
+
+    C: B.C.D.nonce(ausf).nonce(sucm).nonce(ausfn), 
+    [2]-:<tmp(m1).B>,
+    [3]+,B,(nonce(R).nonce(kseaf)):<nonce(R).aenc{<nonce(sqnhn).nonce(R)>}k(A,C).nonce(kseaf)>,
+    [6]-:<tmp(m3).tmp(m1)>,
+    [7]+,B,(nonce(supi)):nonce(supi),
+    [9]-:<tmp(m3).nonce(R).tmp(m1)>
+}
+Environment:{
+[agent1] A [1] : <UE.SN.HN.nonce(supi).nonce(s).pk(C).k(A,C).nonce(sqnue).nonce(fail)>;
+[agent2] B [1] : <UE.SN.HN>;
+[agent3] C [1] : <UE.SN.HN.pk(C).k(A,C).nonce(sqnhn).nonce(R).nonce(kseaf)>
+}
+Goals:{
+    [secrecy] nonce(supi)
+}
+end
