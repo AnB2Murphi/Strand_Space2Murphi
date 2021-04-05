@@ -2288,6 +2288,7 @@ let genCons m i patList =
                            |`Pk role -> role^"Pk"
                            |`Sk role -> role^"Sk"
                            |`Tmp m -> m 
+                           |`K(r1,r2) -> "sym"^r1^r2
                            |_ -> "null"
                   in           
                   let keyAtoms = getAtoms k1 in 
@@ -2300,8 +2301,8 @@ let genCons m i patList =
                                   sprintf "      aencMsg:Message;\n      begin\n" ^
                                   sprintf "    clear aencMsg;\n" ^
                                   sprintf "    k1:=msgs[msg.aencKey].k;\n" ^
-                                  sprintf "    %s := k1.ag;" keyAg ^
-                                  (if String.contains keyAg 'k' then  sprintf "\n"  else sprintf "    %s.msgType := tmp;\n    %s.tmpPart := msg.aencKey;\n" keyAg keyAg) ^
+                                  (if String.contains keyAg 'm' then  match k1 with |`K(r1,r2)->sprintf "    %ssymk1:=k1.ag1;\n    %ssymk2:=k1.ag2;\n" r1 r2 |_->"" else sprintf "    %s := k1.ag;" keyAg) ^
+                                  (* (if String.contains keyAg 'k' then  sprintf "\n"  else sprintf "    %s.msgType := tmp;\n    %s.tmpPart := msg.aencKey;\n" keyAg keyAg) ^ *)
                                   sprintf "    aencMsg:=msgs[msg.aencMsg];\n"^
                                   sprintf "    destruct%d(aencMsg,%s);\n" m1Num (atom2Str m1Atoms) ^
                                   sprintf "  end;\n" 
