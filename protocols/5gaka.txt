@@ -1,56 +1,46 @@
 Protocol AKA:
 Types:{
-    Agent:A.B.C.D
+    Agent:A.B.C
 }
 Knowledges:{
-    A : <A.B.C.nonce(supi).nonce(s).pk(C).k(A,C).nonce(SQN)>;
-    B : <A.B.C.nonce(seafn)>;
-    C : <A.B.C.nonce(supi).pk(C).k(A,C).nonce(SQN>
+    A : <A.B.C.nonce(supi).nonce(s).pk(C).k(A,C).nonce(sqnue).nonce(fail)>;
+    B : <A.B.C>;
+    C : <A.B.C.pk(C).k(A,C).nonce(sqnhn).nonce(R).nonce(kseaf)>
 }
 Agents:{
     A:A.B.C.D.nonce(ue).nonce(ue1).nonce(prekey).nonce(certA).nonce(eapm),
     [1]+,B,(nonce(supi).nonce(s)):<aenc{<nonce(supi).nonce(s)>}pk(C).C>,
-    [4]-:<nonce(SUCI).nonce(SNN)>,
-    [7]-:<nonce(RAND).nonce(AUTH)>,
-    [8]+,B,():nonce(RES),
-    [11]+,B,():nonce(AUTS);
+    [4]-:tmp(m2),
+    [5]+,B,():aenc{<nonce(R).B>}k(A,C),
+    [8]+,B,(nonce(fail)):<nonce(fail).<aenc{nonce(R)}k(A,C).aenc{<nonce(sqnue).nonce(R)>}k(A,C)>>,
+    [10]+,B,():nonce(fail);
 
     B:A.B.C.D.nonce(seafn),
     [1]-:tmp(m1),
-    [2]+,C,(:<tmp(m1).B>,
-    [3]-:<nonce(SUCI).nonce(SNN)>,
-    [4]+,A,():<nonce(SUCI).nonce(SNN)>,
-    [6]-:<nonce(RAND).nonce(AUTH).nonce(XRES)>,
-    [7]+,A,():<nonce(RAND).nonce(AUTH)>,
-    [8]-:nonce(RES),
-    [9]+,C,():nonce(RES),
-    [10]-:<nonce(SUPI).nonce(KSEAF)>,
-    [11]-:nonce(AUTS),
-    [12]+,C,():nonce(AUTS);
+    [2]+,C,():<tmp(m1).B>,
+    [3]-:<nonce(R).tmp(m2).nonce(kseaf)>,
+    [4]+,A,():<nonce(R).tmp(m2)>,
+    [5]-:tmp(m3),
+    [6]+,C,():<tmp(m3).tmp(m1)>,
+    [7]-:nonce(supi),
+    [8]-:tmp(m3),
+    [9]+,C,():<tmp(m3).nonce(R).tmp(m1)>,
+    [10]-:nonce(fail);
+   
 
     C: B.C.D.nonce(ausf).nonce(sucm).nonce(ausfn), 
-    [2]-:<aenc{A}pk(D).nonce(snn)>,
-    [3]+,D,():<aenc{A}pk(D).nonce(snn)>,
-    [5]-:<nonce(RAND).nonce(AUTH).nonce(XRES).nonce(SUPI).nonce(KAUSF)>,
-    [6]+,B,():<nonce(RAND).nonce(AUTH).nonce(XRES)>,
-    [9]-:nonce(RES),
-    [10]+,C,():<nonce(SUPI).nonce(KSEAF)>,
-    [12]-:nonce(AUTS),
-    [13]+,D,():nonce(AUTS);
-
-    D:,
-    [3]-:<aenc{A}pk(D).nonce(snn)>,
-    [5]+,C,(nonce(RAND).nonce(AUTH).nonce(XRES).nonce(SUPI).nonce(KAUSF)):<nonce(RAND).nonce(AUTH).nonce(XRES).nonce(SUPI).nonce(KAUSF)>,
-    [13]-:nonce(AUTS)
+    [2]-:<tmp(m1).B>,
+    [3]+,B,(nonce(R).nonce(kseaf)):<nonce(R).aenc{<nonce(sqnhn).nonce(R)>}k(A,C).nonce(kseaf)>,
+    [6]-:<tmp(m3).tmp(m1)>,
+    [7]+,B,(nonce(supi)):nonce(supi),
+    [9]-:<tmp(m3).nonce(R).tmp(m1)>
 }
 Environment:{
-[agent1] A [1] : <UE.SEAF.Intruder.UDM.nonce(supi).nonce(ue).nonce(ue1).nonce(prekey).nonce(certA).nonce(eapm)>;
-[agent2] B [1] : <UE.SEAF.Intruder.nonce(seafn)>;
-[agent3] C [1] : <UE.Intruder.AUSF.UDM.nonce(ausf).nonce(ausfn).nonce(sucm).nonce(certC)>;
-[agent4] D [1] : <UE.SEAF.AUSF.UDM.nonce(start)>
+[agent1] A [1] : <UE.SN.HN.nonce(supi).nonce(s).pk(C).k(A,C).nonce(sqnue).nonce(fail)>;
+[agent2] B [1] : <UE.SN.HN>;
+[agent3] C [1] : <UE.SN.HN.pk(C).k(A,C).nonce(sqnhn).nonce(R).nonce(kseaf)>
 }
 Goals:{
-    [weakC:6] C non-injectively agrees with A on nonce(ausf);
-    [secrecy] nonce(prekey)
+    [secrecy] nonce(supi)
 }
 end
