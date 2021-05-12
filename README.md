@@ -5,7 +5,7 @@ AnB2Murphi is an automatic translator to bridge the gap between high-level Alice
 
 Theory protocol for paper<br>
 ---
-*AnB2Murphi: A Translator for Converting Alice\&Bob Specifications to Murphi*<br>
+*A Formally Verified Scheme for Security Protocols with the Operational Semantics of Strand Space*<br>
 >The main security protocols proved are:<br>
 >>|Protocols | Unsatisfied  | Time (sec.) | Memory|
 >>|:---:|:---:|:---:|:---:|
@@ -22,7 +22,7 @@ Theory protocol for paper<br>
 >>|Andrew Secure RP|secrecy(Kab)|2.77|54| 
 >>|EAP-TLS authentication|secrecy(prekey)|1.21|1700| 
 >>|EAP-TLS authentication|weakC|151.55|1700| 
-
+>>|5G AKA | secrecy(snn)| 1.55| 1490|
 Difficulty<br>
 ---
 - There are three agents in Otway-Rees including Alice, Bob and Server. Besides, We implemented a mechanism for forwarding secrecy with the help of `tmp` message. When agent receives oneA message that cannot be decrypted from its own knowledge, it forwards this message tagged as `tmp` to another agent.
