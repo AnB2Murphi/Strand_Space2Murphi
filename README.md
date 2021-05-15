@@ -1,6 +1,6 @@
-AnB2Murphi
+Strand_Space2Murphi
 ====
-AnB2Murphi is an automatic translator to bridge the gap between high-level strand space specifications and low-level Murphi model checker, which can help verify the security protocol described in the strand space specifications. The proposed operational semantics of strand space guarantees the semantics consistence between the compilation.<br>
+Strand_Space2Murphi is an automatic translator to bridge the gap between high-level strand space specifications and low-level Murphi model checker, which can help verify the security protocol described in the strand space specifications. The proposed operational semantics of strand space guarantees the semantics consistence between the compilation.<br>
 
 
 Theory protocol for paper<br>
